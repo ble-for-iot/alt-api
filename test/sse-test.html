@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>ble-iot-gwy - indication/notification test</title>
+</head>
+<body>
+
+<h1>ble-iot-gwy - indication/notification test</h1>
+
+<p>Javascript code in this page connects to a ble-iot-gwy.</p>
+<p>Data recieved from the server is shown in the textarea below:</p>
+
+<textarea id="textarea1" style="width: 90%; height: 10em"></textarea>
+
+<script>
+// 2019-oct-15 test: ble-iot-gwy
+// ---
+// from push-test on github: https://github.com/jjking2/push-test
+// 2019/08/11 tested
+// from Using server-sent events
+// https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events
+var textArea = document.getElementById('textarea1');
+if (typeof(EventSource) !== "undefined") {
+  console.log("EventSource supported by your browser.");
+  // var evtSource = new EventSource("http://example.com/cgi-bin/sse-test.cgi", { withCredentials: true });
+  var evtSource = new EventSource("/altapi/nodes/c0:ab:2a:6a:1a:89/services/180f/items/2a19/report");
+  evtSource.onmessage = function(e) {
+    console.log('message: ' + e.data);
+    textArea.value += e.data + "\n";
+  };
+  evtSource.onerror = function(e) {
+    console.log("EventSource failed: " + JSON.stringify(e));
+    evtSource.close();
+  };
+} else {
+  console.log("EventSource not supported by your browser.");
+}
+</script>
+
+</body>
+</html>
