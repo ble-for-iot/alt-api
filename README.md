@@ -1,6 +1,6 @@
 # ble-for-iot/alt-api - Reference Implementation of Alternative BLE IoT Gateway API
 
-A BLE IoT gateway (ble-iot-gwy) provides web access to nearby Bluetooth Low Energy (BLE) devices on the local LAN or remote BLE devices via Internet.
+A BLE IoT gateway (ble-iot-gwy) provides web access to nearby Bluetooth Low Energy (BLE) devices via the local LAN or remote BLE devices via Internet.
 
 See API document, [ALT API](http://www.kobu.com/ble-for-iot/alt-api.html), for what web interface the gateway accepts.
 
